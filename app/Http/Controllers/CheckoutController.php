@@ -47,7 +47,8 @@ class CheckoutController extends Controller
             'shipping_address' => 'required|string',
             'payment_method' => 'required|in:cash,epayment',
             'payment_proof' => 'required|image|mimes:jpeg,png,jpg,gif,svg|max:2048', // Validasi bukti pembayaran
-            'verified_by_admin_id' => 'required_if:payment_method,cash|nullable|exists:users,id', // Wajib jika tunai, admin harus ada            
+            // Sekarang verified_by_admin_id wajib untuk semua metode pembayaran (cash dan epayment)
+            'verified_by_admin_id' => 'required|exists:users,id',
             // Tambahkan validasi lain jika ada input tambahan di form checkout
         ]);
 
@@ -78,7 +79,8 @@ class CheckoutController extends Controller
                 'status' => 'waiting_payment_verification', // Status awal pesanan
                 'payment_method' => $request->payment_method,
                 'payment_status' => 'waiting_verification', // Status awal pembayaran
-                'verified_by_admin_id' => $request->payment_method === 'cash' ? $request->verified_by_admin_id : null,
+                // verified_by_admin_id sekarang diambil langsung karena sudah divalidasi sebagai 'required'
+                'verified_by_admin_id' => $request->verified_by_admin_id,
             ]);
             // Simpan bukti pembayaran
             if ($request->hasFile('payment_proof')) {
