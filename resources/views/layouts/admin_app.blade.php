@@ -91,7 +91,7 @@
             </main>
 
             <footer class="bg-white border-t text-center p-4 text-sm text-gray-600">
-                &copy; {{ date('Y') }} Dibuat dengan ❤️ oleh Briant Juan Hamonangan</p>
+                Bekerja keras agar bisa berbelanja lebih keras!</p>
             </footer>
         </div>
     </div>

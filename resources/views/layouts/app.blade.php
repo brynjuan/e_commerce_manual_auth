@@ -115,7 +115,7 @@
 
     <footer class="bg-gray-800 text-white text-center py-6">
         <div class="container mx-auto px-4 sm:px-6 lg:px-8">
-            <p class="text-sm">&copy; {{ date('Y') }} StyleNest. Dibuat dengan ❤️ oleh Briant Juan Hamonangan</p>
+            <p class="text-sm">Bekerja keras agar bisa berbelanja lebih keras!</p>
             <p class="text-xs mt-1 mb-3">F55123030</p>
             
             {{-- Media Sosial --}}

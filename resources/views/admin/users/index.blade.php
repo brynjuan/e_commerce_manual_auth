@@ -52,7 +52,13 @@
                                     {{ ucfirst($user->role) }}
                                 </span>
                             </td>
-                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">{{ $user->created_at->format('d M Y') }}</td>
+                            <td class="px-6 py-4 whitespace-nowrap text-sm text-gray-500">
+                                @if ($user->created_at)
+                                    {{ $user->created_at->format('d M Y') }}
+                                @else
+                                    <span class="text-xs italic text-gray-400">N/A</span>
+                                @endif
+                            </td>
                             <td class="px-6 py-4 whitespace-nowrap text-sm font-medium">
                                 @if(Auth::user()->id !== $user->id && $user->role !== 'admin') {{-- Mencegah admin menghapus diri sendiri atau admin lain --}}
                                     <form action="{{ route('admin.users.destroy', $user) }}" method="POST" class="inline-block" onsubmit="return confirm('PERINGATAN: Anda akan menghapus pengguna {{ $user->name }}. Tindakan ini tidak dapat diurungkan. Lanjutkan?');">
